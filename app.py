@@ -8,7 +8,7 @@ data = {'Country': ['France 🇫🇷', 'Germany 🇩🇪', 'Italy 🇮🇹', 'Sp
 df = pd.DataFrame(data)
 
 # Title and Text with emojis
-st.title("Tourist Arrivals in Europe ️")
+st.title("FAIRflow")
 st.write("A sample app showing a bar chart and data table ")
 
 # Display bar chart
