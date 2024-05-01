@@ -1,23 +1,40 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
-# Create sample data
-data = {'Country': ['France 🇫🇷', 'Germany 🇩🇪', 'Italy 🇮🇹', 'Spain 🇪🇸'],
-        'Visitors': [23, 31, 18, 25]}
+# Function to generate random data stream
+def generate_data_stream():
+    # Generate random data stream
+    data = np.random.randn(100).cumsum()
+    return data
 
-df = pd.DataFrame(data)
+# Function to plot data stream
+def plot_data_stream(data):
+    plt.figure(figsize=(10, 6))
+    plt.plot(data)
+    plt.title('Data Stream Plot')
+    plt.xlabel('Time')
+    plt.ylabel('Value')
+    st.pyplot()
 
-# Title and Text with emojis
-st.title("FAIRflow")
-st.write("A sample app showing a bar chart and data table ")
+def main():
+    # Set title and description
+    st.title('FAIRflow')
+    st.write("Welcome to FAIRflow - Your data stream visualization tool!")
 
-# Display bar chart
-st.bar_chart(df['Visitors'])
+    # Sidebar with options
+    st.sidebar.header('Navigation')
+    page = st.sidebar.radio('Go to', ['Data Stream', 'FAIR Principles'])
 
-# Display DataFrame with options
-st.dataframe(df, width=800, height=300)
+    if page == 'Data Stream':
+        st.header('Data Stream Plot')
+        data = generate_data_stream()
+        plot_data_stream(data)
+        
+    elif page == 'FAIR Principles':
+        st.header('FAIR Principles Page')
+        st.write("This page will contain information about FAIR principles.")
 
-# Customize DataFrame display (optional)
-st.dataframe(df.style.set_properties(**{'background-color': 'lightblue',
-                                       'color': 'black',
-                                       'border-color': 'white'}))
+if __name__ == "__main__":
+    main()
