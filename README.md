@@ -1,6 +1,4 @@
-Absolutely! Here's the README content in Markdown format:
 
-```markdown
 # FAIRflow
 
 FAIRflow is an interactive web application built using Streamlit that allows users to visualize data streams and learn about FAIR principles.
