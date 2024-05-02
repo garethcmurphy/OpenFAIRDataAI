@@ -9,14 +9,14 @@ def generate_data_stream():
     data = np.random.randn(100).cumsum()
     return data
 
-# Function to plot data stream
 def plot_data_stream(data):
-    plt.figure(figsize=(10, 6))
+    # Function to plot data stream
+    fig, ax = plt.figure(figsize=(10, 6))
     plt.plot(data)
     plt.title('Data Stream Plot')
     plt.xlabel('Time')
     plt.ylabel('Value')
-    st.pyplot()
+    st.pyplot(fig)
 
 def main():
     # Set title and description
