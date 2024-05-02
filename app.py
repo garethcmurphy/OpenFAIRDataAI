@@ -1,3 +1,8 @@
+"""_summary_
+
+    Returns:
+        _type_: _description_
+"""
 import streamlit as st
 import pandas as pd
 import numpy as np
