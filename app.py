@@ -10,21 +10,21 @@ import matplotlib.pyplot as plt
 
 # Function to generate random data stream
 def generate_data_stream():
-    # Generate random data stream
+    """ Generate random data stream"""
     data = np.random.randn(100).cumsum()
     return data
 
 def plot_data_stream(data):
-    # Function to plot data stream
-    fig, ax = plt.figure(figsize=(10, 6))
-    plt.plot(data)
-    plt.title('Data Stream Plot')
-    plt.xlabel('Time')
-    plt.ylabel('Value')
+    """Function to plot data stream"""
+    fig, ax = plt.subplots()
+    ax.plot(data)
+    ax.title('Data Stream Plot')
+    ax.xlabel('Time')
+    ax.ylabel('Value')
     st.pyplot(fig)
 
 def main():
-    # Set title and description
+    """ Set title and description"""
     st.title('FAIRflow')
     st.write("Welcome to FAIRflow - Your data stream visualization tool!")
 
