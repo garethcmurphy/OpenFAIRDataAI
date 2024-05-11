@@ -18,9 +18,9 @@ def plot_data_stream(data):
     """Function to plot data stream"""
     fig, ax = plt.subplots()
     plt.plot(data)
-    #ax.title('Data Stream Plot')
-    #ax.xlabel('Time')
-    #ax.ylabel('Value')
+    ax.title.set_text('Data Stream Plot')
+    ax.set_xlabel('Time')
+    ax.set_ylabel('Value')
     st.pyplot(fig)
 
 def main():
