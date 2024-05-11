@@ -17,10 +17,10 @@ def generate_data_stream():
 def plot_data_stream(data):
     """Function to plot data stream"""
     fig, ax = plt.subplots()
-    ax.plot(data)
-    ax.title('Data Stream Plot')
-    ax.xlabel('Time')
-    ax.ylabel('Value')
+    plt.plot(data)
+    #ax.title('Data Stream Plot')
+    #ax.xlabel('Time')
+    #ax.ylabel('Value')
     st.pyplot(fig)
 
 def main():
