@@ -4,7 +4,6 @@
         _type_: _description_
 """
 import streamlit as st
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -36,7 +35,6 @@ def main():
         st.header('Data Stream Plot')
         data = generate_data_stream()
         plot_data_stream(data)
-        
     elif page == 'FAIR Principles':
         st.markdown("""
         ## FAIR Principles for Data Management
