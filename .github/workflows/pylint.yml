@@ -1,23 +1,63 @@
-name: Pylint
+name: Data Processing and Publishing Workflow
 
-on: [push]
+on: [push]  # Trigger on push events to master branch
 
 jobs:
-  build:
+  data-pipeline:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-    - name: Analysing the code with pylint
-      run: |
-        pylint $(git ls-files '*.py')
+      - uses: actions/checkout@v3
+
+      # Check for data availability (optional)
+      - name: Check for data availability (optional)
+        run: |
+          # Add custom script(s) to check if data is available in a specific location (URL, cloud storage)
+          # Exit with failure if data is unavailable.
+
+      # Download data
+      - name: Download data
+        run: |
+          # Use appropriate data transfer tools (wget, curl, data transfer actions) to download data.
+
+      # Data Citation
+      - name: Add data citation
+        run: |
+          # Add custom script to generate a data citation file (e.g., README.md, citation.bib)
+          # referencing the downloaded data source.
+
+      # Data QC
+      - name: Run data quality checks
+        run: |
+          # Use specific tools or scripts to perform data quality checks (e.g., missing values, data format)
+          # Fail the workflow if critical QC issues are detected.
+
+      # Data Cleaning
+      - name: Clean data
+        run: |
+          # Use specific tools or scripts to clean the data (e.g., handle missing values, format inconsistencies)
+          # Save the cleaned data to a designated location within the repository.
+
+      # Build/Process Data (optional)
+      - name: Build or process data (optional)
+        run: |
+          # Add custom script(s) to build or process the cleaned data as needed for analysis or visualization.
+          # Only run this step if required.
+
+      # Publish Data (optional)
+      - name: Publish data (optional)
+        run: |
+          # Use tools or actions to publish the data to a chosen platform (e.g., data repository, cloud storage)
+          # Ensure proper access control and versioning are set.
+          # Only run this step if data publication is desired.
+
+      # Push Changes (optional)
+      - name: Push changes (optional)
+        run: |
+          # Use git commands to commit and push any changes made during data processing (e.g., cleaned data)
+          # to the repository.
+          # Only run this step if data is cleaned/published and pushing changes is desired.
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git add .
+          git commit -m "Data processing and optional publishing"
+          git push origin HEAD:master
