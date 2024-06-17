@@ -58,6 +58,3 @@ jobs:
           # Only run this step if data is cleaned/published and pushing changes is desired.
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          git add .
-          git commit -m "Data processing and optional publishing"
-          git push origin HEAD:master
