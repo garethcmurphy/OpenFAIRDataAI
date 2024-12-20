@@ -1,4 +1,8 @@
 {
+  "python.analysis.extraPaths": [
+    "./src", 
+    "/Users/garethmurphy/Library/Caches/pypoetry/virtualenvs/streamlit-test-J-F8cXmt-py3.13/lib/python3.13/site-packages",
+],
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#3f4ee2",
     "activityBar.background": "#3f4ee2",
