@@ -1,0 +1,69 @@
+.fair-principles {
+  max-width: 1000px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a73e8;
+  margin-bottom: 0.75rem;
+}
+
+.fair-intro {
+  color: #444;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.principle-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-top: 4px solid #1a73e8;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.principle-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.principle-letter {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.principle-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.principle-list li {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.item-code {
+  font-weight: 700;
+  color: #222;
+}
+
+.fair-footer {
+  color: #555;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
