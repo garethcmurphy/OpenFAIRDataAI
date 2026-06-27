@@ -1,50 +1,95 @@
 
 # FAIRflow
 
-FAIRflow is an interactive web application built using Streamlit that allows users to visualize data streams and learn about FAIR principles.
+FAIRflow is an interactive web application built with **React** and **Vite** that allows users to visualize data streams and learn about FAIR principles. It is hosted on **GitHub Pages**.
 
 ## Features
 
-- **Data Stream Plot:** View a real-time plot of a generated data stream.
+- **Data Stream Plot:** View a real-time plot of a simulated random-walk data stream, with a button to generate a new stream on demand.
 - **FAIR Principles:** Learn about FAIR principles, which promote Findability, Accessibility, Interoperability, and Reusability of data.
+
+## Live Demo
+
+The app is deployed on GitHub Pages:  
+👉 **[https://garethcmurphy.github.io/OpenFAIRDataAI/](https://garethcmurphy.github.io/OpenFAIRDataAI/)**
+
+## Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| [React 19](https://react.dev/) | UI framework |
+| [Vite](https://vite.dev/) | Build tool & dev server |
+| [Recharts](https://recharts.org/) | Data visualisation |
+| [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/) | Unit testing |
+| GitHub Actions | CI/CD pipeline |
+| GitHub Pages | Hosting |
 
 ## Getting Started
 
-To run FAIRflow locally, follow these steps:
+### Prerequisites
+
+- Node.js ≥ 18
+- npm ≥ 9
+
+### Installation
 
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your-username/fairflow.git
+   git clone https://github.com/garethcmurphy/OpenFAIRDataAI.git
+   cd OpenFAIRDataAI
    ```
 
-2. Navigate to the project directory:
+2. Install dependencies:
 
    ```bash
-   cd fairflow
+   npm install
    ```
 
-3. Install the required Python packages:
+3. Start the development server:
 
    ```bash
-   pip install -r requirements.txt
+   npm run dev
    ```
 
-4. Run the Streamlit app:
+4. Open your browser at [http://localhost:5173](http://localhost:5173).
 
-   ```bash
-   streamlit run app.py
-   ```
+## Available Scripts
 
-5. Open your web browser and go to [http://localhost:8501](http://localhost:8501) to view the app.
+| Script | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production (output in `dist/`) |
+| `npm run preview` | Preview the production build locally |
+| `npm test` | Run unit tests |
+| `npm run lint` | Lint source files |
 
-## Live Demo
+## Deployment
 
-Check out the live demo of FAIRflow at [fairflow.streamlit.app](https://fairflow.streamlit.app).
+The app is automatically built and deployed to GitHub Pages on every push to `main` via the [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow.
 
-## Screenshots
+To enable GitHub Pages in your fork:
 
-[Add screenshots of your app here]
+1. Go to **Settings → Pages**.
+2. Set **Source** to **GitHub Actions**.
+
+## Project Structure
+
+```
+OpenFAIRDataAI/
+├── public/               # Static assets
+├── src/
+│   ├── components/
+│   │   ├── DataStream.jsx   # Data stream chart component
+│   │   ├── FairPrinciples.jsx  # FAIR principles content
+│   │   └── Sidebar.jsx      # Navigation sidebar
+│   ├── test/             # Vitest unit tests
+│   ├── App.jsx           # Root component
+│   └── main.jsx          # Entry point
+├── index.html
+├── vite.config.js
+└── package.json
+```
 
 ## Contributing
 
@@ -52,5 +97,5 @@ Contributions are welcome! Please create a new issue or submit a pull request if
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 

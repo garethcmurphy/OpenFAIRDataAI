@@ -1,0 +1,31 @@
+.data-stream {
+  max-width: 900px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a73e8;
+  margin-bottom: 0.4rem;
+}
+
+.section-subtitle {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.refresh-btn {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.4rem;
+  background-color: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.refresh-btn:hover {
+  background-color: #1558b0;
+}
