@@ -28,7 +28,7 @@ The app is deployed on GitHub Pages:
 
 ### Prerequisites
 
-- Node.js ≥ 18
+- Node.js ≥ 24
 - npm ≥ 9
 
 ### Installation
@@ -66,7 +66,7 @@ The app is deployed on GitHub Pages:
 
 ## Deployment
 
-The app is automatically built and deployed to GitHub Pages on every push to `main` via the [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow.
+The app is automatically built with Node.js 24 and deployed to GitHub Pages on every push to `main` via the [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) workflow.
 
 To enable GitHub Pages in your fork:
 
@@ -98,4 +98,3 @@ Contributions are welcome! Please create a new issue or submit a pull request if
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
