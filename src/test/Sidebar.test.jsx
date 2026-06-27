@@ -23,9 +23,9 @@ describe('Sidebar', () => {
   })
 
   it('calls onNavigate when a button is clicked', () => {
-    const onNavigate = vi.fn()
-    render(<Sidebar pages={pages} currentPage="Data Stream" onNavigate={onNavigate} />)
+    const mockOnNavigate = vi.fn()
+    render(<Sidebar pages={pages} currentPage="Data Stream" onNavigate={mockOnNavigate} />)
     fireEvent.click(screen.getByRole('button', { name: 'FAIR Principles' }))
-    expect(onNavigate).toHaveBeenCalledWith('FAIR Principles')
+    expect(mockOnNavigate).toHaveBeenCalledWith('FAIR Principles')
   })
 })
