@@ -178,7 +178,19 @@ function FairPrinciples() {
                   </div>
                   <div>
                     <dt>Access link</dt>
-                    <dd>{renderMetadataValue(dataset.accessUrl)}</dd>
+                    <dd>
+                      {dataset.accessUrl ? (
+                        <a
+                          className="dataset-link"
+                          href={dataset.accessUrl}
+                          aria-label={`Open access landing page for ${dataset.name}`}
+                        >
+                          View dataset landing page
+                        </a>
+                      ) : (
+                        renderMetadataValue(dataset.accessUrl)
+                      )}
+                    </dd>
                   </div>
                 </dl>
                 <ul className="score-list">

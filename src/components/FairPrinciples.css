@@ -139,6 +139,17 @@
   font-style: italic;
 }
 
+.dataset-link {
+  color: #1a73e8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.dataset-link:hover,
+.dataset-link:focus-visible {
+  text-decoration: underline;
+}
+
 .score-list {
   list-style: none;
   display: grid;

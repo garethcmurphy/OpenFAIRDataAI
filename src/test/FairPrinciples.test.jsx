@@ -2,6 +2,10 @@ import { describe, it, expect } from 'vitest'
 import { render, screen, within } from '@testing-library/react'
 import FairPrinciples from '../components/FairPrinciples.jsx'
 
+function getDatasetCard(name) {
+  return screen.getByRole('heading', { name, level: 3 }).closest('article')
+}
+
 describe('FairPrinciples', () => {
   it('renders the section title', () => {
     render(<FairPrinciples />)
@@ -30,6 +34,7 @@ describe('FairPrinciples', () => {
     expect(screen.getByText('Coastal Water Quality Time Series')).toBeInTheDocument()
     expect(screen.getByText('Urban Tree Health Survey')).toBeInTheDocument()
     expect(screen.getByText('Historic Rainfall Ledger')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Open access landing page for Coastal Water Quality Time Series/ })).toBeInTheDocument()
     expect(screen.getByText('FAIR score: 4 / 4')).toBeInTheDocument()
     expect(screen.getByText('FAIR score: 3 / 4')).toBeInTheDocument()
     expect(screen.getByText('FAIR score: 2 / 4')).toBeInTheDocument()
@@ -38,9 +43,9 @@ describe('FairPrinciples', () => {
   it('shows dataset metadata checks and missing values', () => {
     render(<FairPrinciples />)
 
-    const coastalWaterCard = screen.getByRole('heading', { name: 'Coastal Water Quality Time Series', level: 3 }).closest('article')
-    const urbanTreeHealthCard = screen.getByRole('heading', { name: 'Urban Tree Health Survey', level: 3 }).closest('article')
-    const historicRainfallCard = screen.getByRole('heading', { name: 'Historic Rainfall Ledger', level: 3 }).closest('article')
+    const coastalWaterCard = getDatasetCard('Coastal Water Quality Time Series')
+    const urbanTreeHealthCard = getDatasetCard('Urban Tree Health Survey')
+    const historicRainfallCard = getDatasetCard('Historic Rainfall Ledger')
 
     expect(coastalWaterCard).not.toBeNull()
     expect(urbanTreeHealthCard).not.toBeNull()
