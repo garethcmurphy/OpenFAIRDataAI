@@ -101,6 +101,10 @@ const principles = [
   },
 ]
 
+function renderMetadataValue(value) {
+  return value || <span className="metadata-missing">Not provided</span>
+}
+
 function FairPrinciples() {
   return (
     <section className="fair-principles">
@@ -162,19 +166,19 @@ function FairPrinciples() {
                 <dl className="dataset-metadata">
                   <div>
                     <dt>Ontology terms</dt>
-                    <dd>{dataset.ontologyTerms || 'Missing'}</dd>
+                    <dd>{renderMetadataValue(dataset.ontologyTerms)}</dd>
                   </div>
                   <div>
                     <dt>License</dt>
-                    <dd>{dataset.license || 'Missing'}</dd>
+                    <dd>{renderMetadataValue(dataset.license)}</dd>
                   </div>
                   <div>
                     <dt>Persistent identifier</dt>
-                    <dd>{dataset.persistentIdentifier || 'Missing'}</dd>
+                    <dd>{renderMetadataValue(dataset.persistentIdentifier)}</dd>
                   </div>
                   <div>
                     <dt>Access link</dt>
-                    <dd>{dataset.accessUrl || 'Missing'}</dd>
+                    <dd>{renderMetadataValue(dataset.accessUrl)}</dd>
                   </div>
                 </dl>
                 <ul className="score-list">

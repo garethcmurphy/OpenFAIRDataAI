@@ -38,13 +38,16 @@ describe('FairPrinciples', () => {
   it('shows dataset metadata checks and missing values', () => {
     render(<FairPrinciples />)
 
+    const coastalWaterCard = screen.getByRole('heading', { name: 'Coastal Water Quality Time Series', level: 3 }).closest('article')
     const urbanTreeHealthCard = screen.getByRole('heading', { name: 'Urban Tree Health Survey', level: 3 }).closest('article')
     const historicRainfallCard = screen.getByRole('heading', { name: 'Historic Rainfall Ledger', level: 3 }).closest('article')
 
+    expect(coastalWaterCard).not.toBeNull()
     expect(urbanTreeHealthCard).not.toBeNull()
     expect(historicRainfallCard).not.toBeNull()
-    expect(within(urbanTreeHealthCard).getByText('Missing')).toBeInTheDocument()
-    expect(within(historicRainfallCard).getAllByText('Missing')).toHaveLength(2)
+    expect(within(coastalWaterCard).queryByText('Not provided')).not.toBeInTheDocument()
+    expect(within(urbanTreeHealthCard).getByText('Not provided')).toBeInTheDocument()
+    expect(within(historicRainfallCard).getAllByText('Not provided')).toHaveLength(2)
     expect(screen.getByText(/Interoperable: Metadata terms from ontologies — Needs work/)).toBeInTheDocument()
     expect(screen.getByText(/Reusable: Data license — Needs work/)).toBeInTheDocument()
     expect(screen.getByText(/Findable: Persistent identifier — Needs work/)).toBeInTheDocument()

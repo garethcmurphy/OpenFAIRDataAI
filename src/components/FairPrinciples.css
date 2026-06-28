@@ -134,6 +134,11 @@
   line-height: 1.45;
 }
 
+.metadata-missing {
+  color: #c5221f;
+  font-style: italic;
+}
+
 .score-list {
   list-style: none;
   display: grid;
