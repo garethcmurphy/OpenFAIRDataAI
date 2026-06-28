@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import FairPrinciples from '../components/FairPrinciples.jsx'
 
 describe('FairPrinciples', () => {
@@ -37,7 +37,14 @@ describe('FairPrinciples', () => {
 
   it('shows dataset metadata checks and missing values', () => {
     render(<FairPrinciples />)
-    expect(screen.getAllByText('Missing')).toHaveLength(3)
+
+    const urbanTreeHealthCard = screen.getByRole('heading', { name: 'Urban Tree Health Survey', level: 3 }).closest('article')
+    const historicRainfallCard = screen.getByRole('heading', { name: 'Historic Rainfall Ledger', level: 3 }).closest('article')
+
+    expect(urbanTreeHealthCard).not.toBeNull()
+    expect(historicRainfallCard).not.toBeNull()
+    expect(within(urbanTreeHealthCard).getByText('Missing')).toBeInTheDocument()
+    expect(within(historicRainfallCard).getAllByText('Missing')).toHaveLength(2)
     expect(screen.getByText(/Interoperable: Metadata terms from ontologies — Needs work/)).toBeInTheDocument()
     expect(screen.getByText(/Reusable: Data license — Needs work/)).toBeInTheDocument()
     expect(screen.getByText(/Findable: Persistent identifier — Needs work/)).toBeInTheDocument()
