@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import './FairPrinciples.css'
 
 const sampleDatasets = [
@@ -6,6 +7,7 @@ const sampleDatasets = [
     description: 'Daily coastal sensor measurements with controlled environmental metadata.',
     ontologyTerms: 'ENVO, SWEET',
     license: 'CC-BY-4.0',
+    metadataProfile: 'Dublin Core',
     persistentIdentifier: 'doi:10.48539/fairflow.coastal.2026',
     accessUrl: 'https://example.org/datasets/coastal-water-quality',
   },
@@ -14,6 +16,7 @@ const sampleDatasets = [
     description: 'Field observations of tree condition with a landing page but mixed metadata quality.',
     ontologyTerms: '',
     license: 'CC0-1.0',
+    metadataProfile: '',
     persistentIdentifier: 'ark:/12345/urban-tree-health',
     accessUrl: 'https://example.org/datasets/urban-tree-health',
   },
@@ -22,6 +25,7 @@ const sampleDatasets = [
     description: 'Digitised rainfall tables that still need a license and richer identifier support.',
     ontologyTerms: 'Wikidata',
     license: '',
+    metadataProfile: '',
     persistentIdentifier: '',
     accessUrl: 'https://example.org/datasets/historic-rainfall-ledger',
   },
@@ -106,6 +110,47 @@ function renderMetadataValue(value) {
 }
 
 function FairPrinciples() {
+  const [sortBy, setSortBy] = useState('score')
+  const [sortDirection, setSortDirection] = useState('desc')
+
+  const datasetsWithScores = useMemo(
+    () =>
+      sampleDatasets.map((dataset) => {
+        const scores = scoreCriteria.map((criterion) => ({
+          ...criterion,
+          passed: criterion.passes(dataset),
+        }))
+        const totalScore = scores.filter((score) => score.passed).length
+
+        return { dataset, scores, totalScore }
+      }),
+    [],
+  )
+
+  const sortedDatasets = useMemo(
+    () =>
+      [...datasetsWithScores].sort((left, right) => {
+        const comparison =
+          sortBy === 'name'
+            ? left.dataset.name.localeCompare(right.dataset.name)
+            : left.totalScore - right.totalScore
+        return sortDirection === 'asc' ? comparison : -comparison
+      }),
+    [datasetsWithScores, sortBy, sortDirection],
+  )
+
+  const sortArrow = sortDirection === 'asc' ? '↑' : '↓'
+
+  function handleSort(column) {
+    if (sortBy === column) {
+      setSortDirection((direction) => (direction === 'asc' ? 'desc' : 'asc'))
+      return
+    }
+
+    setSortBy(column)
+    setSortDirection(column === 'name' ? 'asc' : 'desc')
+  }
+
   return (
     <section className="fair-principles">
       <h2 className="section-title">FAIR Principles for Data Management</h2>
@@ -147,15 +192,8 @@ function FairPrinciples() {
           terms in metadata, and a reusable data license to produce a four-part FAIR score.
         </p>
         <div className="dataset-grid">
-          {sampleDatasets.map((dataset) => {
-            const scores = scoreCriteria.map((criterion) => ({
-              ...criterion,
-              passed: criterion.passes(dataset),
-            }))
-            const totalScore = scores.filter((score) => score.passed).length
-
-            return (
-              <article key={dataset.name} className="dataset-card">
+          {sortedDatasets.map(({ dataset, scores, totalScore }) => (
+            <article key={dataset.name} className="dataset-card">
                 <div className="dataset-card-header">
                   <div>
                     <h3 className="dataset-title">{dataset.name}</h3>
@@ -175,6 +213,10 @@ function FairPrinciples() {
                   <div>
                     <dt>Persistent identifier</dt>
                     <dd>{renderMetadataValue(dataset.persistentIdentifier)}</dd>
+                  </div>
+                  <div>
+                    <dt>Metadata profile</dt>
+                    <dd>{renderMetadataValue(dataset.metadataProfile)}</dd>
                   </div>
                   <div>
                     <dt>Access link</dt>
@@ -207,9 +249,45 @@ function FairPrinciples() {
                   ))}
                 </ul>
               </article>
-            )
-          })}
+          ))}
         </div>
+        <section className="dataset-table-section" aria-labelledby="fair-assets-table-title">
+          <h3 id="fair-assets-table-title" className="dataset-table-title">
+            Sortable FAIR assets table
+          </h3>
+          <div className="dataset-table-wrapper">
+            <table className="dataset-table">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <button type="button" className="table-sort-btn" onClick={() => handleSort('name')}>
+                      Asset name {sortBy === 'name' ? sortArrow : ''}
+                    </button>
+                  </th>
+                  <th scope="col">
+                    <button type="button" className="table-sort-btn" onClick={() => handleSort('score')}>
+                      FAIR score {sortBy === 'score' ? sortArrow : ''}
+                    </button>
+                  </th>
+                  <th scope="col">Ontology terms</th>
+                  <th scope="col">License</th>
+                  <th scope="col">Metadata profile</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedDatasets.map(({ dataset, totalScore }) => (
+                  <tr key={`${dataset.name}-row`}>
+                    <td>{dataset.name}</td>
+                    <td>{totalScore} / 4</td>
+                    <td>{renderMetadataValue(dataset.ontologyTerms)}</td>
+                    <td>{renderMetadataValue(dataset.license)}</td>
+                    <td>{renderMetadataValue(dataset.metadataProfile)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
       </section>
     </section>
   )
