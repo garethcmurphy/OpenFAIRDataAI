@@ -2,11 +2,13 @@ import { useState } from 'react'
 import Sidebar from './components/Sidebar.jsx'
 import AssetDetails from './components/AssetDetails.jsx'
 import FairPrinciples from './components/FairPrinciples.jsx'
+import FairHelp from './components/FairHelp.jsx'
 import './App.css'
 
 const PAGES = {
   ASSET_DETAILS: 'Asset Details',
   FAIR_PRINCIPLES: 'FAIR Principles',
+  FAIR_HELP: 'FAIR Help',
 }
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
         <p className="app-description">Welcome to FAIRflow - Your FAIR data management tool!</p>
         {currentPage === PAGES.ASSET_DETAILS && <AssetDetails />}
         {currentPage === PAGES.FAIR_PRINCIPLES && <FairPrinciples />}
+        {currentPage === PAGES.FAIR_HELP && <FairHelp />}
       </main>
     </div>
   )

@@ -7,6 +7,8 @@ FAIRflow is an interactive web application built with **React** and **Vite** tha
 
 - **Data Stream Plot:** View a real-time plot of a simulated random-walk data stream, with a button to generate a new stream on demand.
 - **FAIR Principles:** Learn about FAIR principles, which promote Findability, Accessibility, Interoperability, and Reusability of data.
+- **Sortable FAIR Assets Table:** Compare FAIR score signals across sample assets and sort by name or score.
+- **FAIR Help Page:** Follow practical guidance to improve dataset FAIRness with ontology terms, licenses, persistent identifiers, and Dublin Core metadata.
 
 ## Live Demo
 
@@ -63,6 +65,15 @@ The app is deployed on GitHub Pages:
 | `npm run preview` | Preview the production build locally |
 | `npm test` | Run unit tests |
 | `npm run lint` | Lint source files |
+
+## FAIR Help Guide
+
+The **FAIR Help** page in the app provides a practical checklist to make a dataset more FAIR:
+
+- Add controlled **ontology terms** for interoperable metadata.
+- Include a clear reuse **license** (e.g., CC-BY-4.0 or CC0-1.0).
+- Provide rich metadata using a profile such as **Dublin Core**.
+- Add a persistent identifier (DOI/ARK) and a clear access landing page.
 
 ## Deployment
 

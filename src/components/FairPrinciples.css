@@ -186,3 +186,43 @@
   background: rgba(255, 255, 255, 0.8);
   font-weight: 700;
 }
+
+.dataset-table-section {
+  margin-top: 1.5rem;
+}
+
+.dataset-table-title {
+  margin-bottom: 0.75rem;
+  color: #1f1f1f;
+}
+
+.dataset-table-wrapper {
+  overflow-x: auto;
+}
+
+.dataset-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #d7e3fc;
+  border-radius: 8px;
+}
+
+.dataset-table th,
+.dataset-table td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.dataset-table th {
+  background: #f7faff;
+}
+
+.table-sort-btn {
+  border: 0;
+  background: transparent;
+  color: #1a73e8;
+  font-weight: 700;
+  cursor: pointer;
+}

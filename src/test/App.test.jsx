@@ -30,5 +30,11 @@ describe('App', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Asset Details' }))
     expect(screen.getByRole('heading', { name: 'Asset Details', level: 1 })).toBeInTheDocument()
   })
-})
 
+  it('navigates to FAIR Help page', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'FAIR Help' }))
+    expect(screen.getByRole('heading', { name: 'How to make your dataset more FAIR', level: 2 })).toBeInTheDocument()
+    expect(screen.getByText(/Dublin Core/)).toBeInTheDocument()
+  })
+})
