@@ -1,5 +1,59 @@
 import './FairPrinciples.css'
 
+const sampleDatasets = [
+  {
+    name: 'Coastal Water Quality Time Series',
+    description: 'Daily coastal sensor measurements with controlled environmental metadata.',
+    ontologyTerms: 'ENVO, SWEET',
+    license: 'CC-BY-4.0',
+    persistentIdentifier: 'doi:10.48539/fairflow.coastal.2026',
+    accessUrl: 'https://example.org/datasets/coastal-water-quality',
+  },
+  {
+    name: 'Urban Tree Health Survey',
+    description: 'Field observations of tree condition with a landing page but mixed metadata quality.',
+    ontologyTerms: '',
+    license: 'CC0-1.0',
+    persistentIdentifier: 'ark:/12345/urban-tree-health',
+    accessUrl: 'https://example.org/datasets/urban-tree-health',
+  },
+  {
+    name: 'Historic Rainfall Ledger',
+    description: 'Digitised rainfall tables that still need a license and richer identifier support.',
+    ontologyTerms: 'Wikidata',
+    license: '',
+    persistentIdentifier: '',
+    accessUrl: 'https://example.org/datasets/historic-rainfall-ledger',
+  },
+]
+
+const scoreCriteria = [
+  {
+    id: 'F',
+    label: 'Findable',
+    checkLabel: 'Persistent identifier',
+    passes: (dataset) => Boolean(dataset.persistentIdentifier),
+  },
+  {
+    id: 'A',
+    label: 'Accessible',
+    checkLabel: 'Access landing page',
+    passes: (dataset) => Boolean(dataset.accessUrl),
+  },
+  {
+    id: 'I',
+    label: 'Interoperable',
+    checkLabel: 'Metadata terms from ontologies',
+    passes: (dataset) => Boolean(dataset.ontologyTerms),
+  },
+  {
+    id: 'R',
+    label: 'Reusable',
+    checkLabel: 'Data license',
+    passes: (dataset) => Boolean(dataset.license),
+  },
+]
+
 const principles = [
   {
     id: 'F',
@@ -80,6 +134,67 @@ function FairPrinciples() {
         By following the FAIR principles, researchers can significantly improve the findability,
         accessibility, usability, and overall impact of their research data.
       </p>
+      <section className="dataset-scores" aria-labelledby="dataset-score-title">
+        <h2 id="dataset-score-title" className="section-title">
+          Sample dataset FAIR scores
+        </h2>
+        <p className="fair-intro">
+          Each sample dataset is checked for persistent identifiers, access information, ontology
+          terms in metadata, and a reusable data license to produce a four-part FAIR score.
+        </p>
+        <div className="dataset-grid">
+          {sampleDatasets.map((dataset) => {
+            const scores = scoreCriteria.map((criterion) => ({
+              ...criterion,
+              passed: criterion.passes(dataset),
+            }))
+            const totalScore = scores.filter((score) => score.passed).length
+
+            return (
+              <article key={dataset.name} className="dataset-card">
+                <div className="dataset-card-header">
+                  <div>
+                    <h3 className="dataset-title">{dataset.name}</h3>
+                    <p className="dataset-description">{dataset.description}</p>
+                  </div>
+                  <p className="dataset-total-score">FAIR score: {totalScore} / 4</p>
+                </div>
+                <dl className="dataset-metadata">
+                  <div>
+                    <dt>Ontology terms</dt>
+                    <dd>{dataset.ontologyTerms || 'Missing'}</dd>
+                  </div>
+                  <div>
+                    <dt>License</dt>
+                    <dd>{dataset.license || 'Missing'}</dd>
+                  </div>
+                  <div>
+                    <dt>Persistent identifier</dt>
+                    <dd>{dataset.persistentIdentifier || 'Missing'}</dd>
+                  </div>
+                  <div>
+                    <dt>Access link</dt>
+                    <dd>{dataset.accessUrl || 'Missing'}</dd>
+                  </div>
+                </dl>
+                <ul className="score-list">
+                  {scores.map((score) => (
+                    <li
+                      key={score.id}
+                      className={`score-item ${score.passed ? 'score-item-pass' : 'score-item-fail'}`}
+                    >
+                      <span className="score-code">{score.id}</span>
+                      <span>
+                        {score.label}: {score.checkLabel} — {score.passed ? 'Pass' : 'Needs work'}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            )
+          })}
+        </div>
+      </section>
     </section>
   )
 }
