@@ -66,4 +66,123 @@
   font-style: italic;
   font-size: 0.95rem;
   line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.dataset-scores {
+  margin-top: 2rem;
+}
+
+.dataset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.dataset-card {
+  background: #fff;
+  border: 1px solid #d7e3fc;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.08);
+}
+
+.dataset-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dataset-title {
+  font-size: 1.05rem;
+  color: #1f1f1f;
+  margin-bottom: 0.35rem;
+}
+
+.dataset-description {
+  color: #555;
+  line-height: 1.5;
+}
+
+.dataset-total-score {
+  flex-shrink: 0;
+  background: #e8f0fe;
+  color: #1a73e8;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+}
+
+.dataset-metadata {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.dataset-metadata dt {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+.dataset-metadata dd {
+  color: #222;
+  line-height: 1.45;
+}
+
+.metadata-missing {
+  color: #c5221f;
+  font-style: italic;
+}
+
+.dataset-link {
+  color: #1a73e8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.dataset-link:hover,
+.dataset-link:focus-visible {
+  text-decoration: underline;
+}
+
+.score-list {
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.score-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.score-item-pass {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.score-item-fail {
+  background: #fce8e6;
+  color: #c5221f;
+}
+
+.score-code {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
 }
