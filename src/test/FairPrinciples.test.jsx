@@ -50,6 +50,8 @@ describe('FairPrinciples', () => {
     expect(coastalWaterCard).not.toBeNull()
     expect(urbanTreeHealthCard).not.toBeNull()
     expect(historicRainfallCard).not.toBeNull()
+    expect(within(coastalWaterCard).getByText('Metadata profile')).toBeInTheDocument()
+    expect(within(coastalWaterCard).getByText('Dublin Core')).toBeInTheDocument()
     expect(within(coastalWaterCard).queryByText('Not provided')).not.toBeInTheDocument()
     expect(within(urbanTreeHealthCard).getAllByText('Not provided')).toHaveLength(2)
     expect(within(historicRainfallCard).getAllByText('Not provided')).toHaveLength(3)
