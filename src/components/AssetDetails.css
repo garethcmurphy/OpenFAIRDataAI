@@ -1,0 +1,257 @@
+.asset-details {
+  max-width: 1000px;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a73e8;
+  margin-bottom: 0.5rem;
+}
+
+.section-intro {
+  color: #444;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.asset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card */
+.asset-card {
+  background: #fff;
+  border: 1px solid #d7e3fc;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.07);
+}
+
+.asset-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.asset-card-title-group {
+  flex: 1;
+}
+
+.asset-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f1f1f;
+  margin-bottom: 0.35rem;
+}
+
+.asset-description {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* FAIR badge */
+.fair-badge {
+  flex-shrink: 0;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.badge-full {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.badge-partial {
+  background: #fef7e0;
+  color: #b45309;
+}
+
+.badge-low {
+  background: #fce8e6;
+  color: #c5221f;
+}
+
+/* Score pills row */
+.asset-score-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.score-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: default;
+}
+
+.score-pill-pass {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.score-pill-fail {
+  background: #fce8e6;
+  color: #c5221f;
+}
+
+/* Metadata grid */
+.asset-meta,
+.asset-extra-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.asset-meta-item dt {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.2rem;
+}
+
+.asset-meta-item dd {
+  color: #222;
+  line-height: 1.5;
+}
+
+.value-missing {
+  color: #c5221f;
+  font-style: italic;
+}
+
+/* Ontology terms list */
+.ontology-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ontology-term {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.88rem;
+  background: #e8f0fe;
+  color: #1a56c4;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  width: fit-content;
+}
+
+/* Access link */
+.asset-link {
+  color: #1a73e8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.asset-link:hover,
+.asset-link:focus-visible {
+  text-decoration: underline;
+}
+
+/* Details toggle */
+.details-toggle {
+  background: none;
+  border: 1px solid #1a73e8;
+  color: #1a73e8;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s;
+}
+
+.details-toggle:hover,
+.details-toggle:focus-visible {
+  background: #1a73e8;
+  color: #fff;
+}
+
+/* Expanded details panel */
+.asset-details-panel {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Keywords */
+.keyword-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.keyword-tag {
+  background: #f1f3f4;
+  color: #444;
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.85rem;
+}
+
+/* FAIR breakdown */
+.breakdown-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.score-list {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.score-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.score-item-pass {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.score-item-fail {
+  background: #fce8e6;
+  color: #c5221f;
+}
+
+.score-code {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  font-weight: 700;
+}

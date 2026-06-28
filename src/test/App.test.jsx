@@ -13,9 +13,9 @@ describe('App', () => {
     expect(screen.getByText(/Welcome to FAIRflow/)).toBeInTheDocument()
   })
 
-  it('shows Data Stream page by default', () => {
+  it('shows Asset Details page by default', () => {
     render(<App />)
-    expect(screen.getByText('Data Stream Plot')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Asset Details', level: 1 })).toBeInTheDocument()
   })
 
   it('navigates to FAIR Principles page', () => {
@@ -24,10 +24,11 @@ describe('App', () => {
     expect(screen.getByText('FAIR Principles for Data Management')).toBeInTheDocument()
   })
 
-  it('navigates back to Data Stream page', () => {
+  it('navigates back to Asset Details page', () => {
     render(<App />)
     fireEvent.click(screen.getByRole('button', { name: 'FAIR Principles' }))
-    fireEvent.click(screen.getByRole('button', { name: 'Data Stream' }))
-    expect(screen.getByText('Data Stream Plot')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Asset Details' }))
+    expect(screen.getByRole('heading', { name: 'Asset Details', level: 1 })).toBeInTheDocument()
   })
 })
+
